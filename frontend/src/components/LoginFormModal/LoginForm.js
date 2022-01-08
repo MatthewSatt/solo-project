@@ -84,7 +84,7 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      
+
       <h1 id="loginheader">Login</h1>
         <label>
           <input

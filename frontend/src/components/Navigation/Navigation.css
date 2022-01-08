@@ -1,14 +1,25 @@
 .navigation-navbar {
-    display: flex;
-    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.075);
-    height: 2fr;
+    justify-content: space-between;
+    background-color: yellow;
+    text-decoration: none;
+}
+
+
+.navigation-navbar li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 #title {
-    font-weight: bold;
-    font-size: 30px;
-    margin-right: 40px;
     text-decoration: none;
+    display: flex;
+    margin: 50px;
+    list-style: none;
+    font-size: 50px;
 }

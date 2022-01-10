@@ -1,5 +1,14 @@
 /* TODO Add site wide styles */
-.main {
+body {
     margin: 0;
     padding: 0;
+    background-color: rgb(233, 213, 187);
 }
+
+
+/*
+
+
+npx sequelize model:generate --name NoteBook --attributes userId:integer,title:string
+npx sequelize model:generate --name Note --attributes userId:integer,notebookId:integer,title:string,content:text
+*/

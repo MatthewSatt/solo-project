@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf'
 
 
 const GET_ALL_NOTES = 'notes/getNotes'
+const GET_NOTE = 'notes/getNote'
 const ADD_NOTE = 'notes/addNote'
 const EDIT_NOTE = 'notes/editNote'
 const DELETE_NOTE = 'notes/deleteNote'
@@ -14,6 +15,16 @@ const getNotes = notes => ({
 })
 
 // get notes function
+const getAllNotes = (id) => async(dispatch) => {
+    const res = await csrfFetch(`/api/notes/${id}`)
+
+    if(res.ok) {
+        const note = await res.json();
+        if(note) {
+            dispatch(getNotes(note))
+        }
+    }
+}
 
 //------------------------------------------------------------------
 //Adds a note
@@ -23,6 +34,11 @@ const addNote = note => ({
 })
 
 // add note function
+
+const addANote = note => ({
+    type:ADD_NOTE,
+    note,
+})
 
 //------------------------------------------------------------------
 //Adds edits a note
@@ -49,3 +65,4 @@ const noteReducer = () => {
 
 
 export default noteReducer;
+

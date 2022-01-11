@@ -16,7 +16,7 @@ const AllNotes = () => {
 
     return (
         <div>
-            <h2>This is something</h2>
+            <h2>This is single note</h2>
             <ul>
                 {notes?.map(note => (
                     <li key={note.content}>

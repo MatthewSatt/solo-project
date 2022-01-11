@@ -51,7 +51,7 @@ router.get(
 
 //Post new note
 router.post(
-  "/",
+  "/new",
   requireAuth,
   validateNewNote,
   asyncHandler(async function (req, res) {

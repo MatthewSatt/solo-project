@@ -5,15 +5,40 @@ const ADD_NOTE = 'notes/ADD_NOTE'
 const EDIT_NOTE = 'notes/EDIT_NOTE'
 const DELETE_NOTE = 'notes/DELETE_NOTE'
 
-//Gets all notes
 const getNotes = list => ({
     type: GET_ALL_NOTES,
     list,
 })
 
+
+const getANote = list => ({
+    type: GET_NOTE,
+    list,
+})
+
+
+const addANote = list => ({
+    type: ADD_NOTE,
+    list,
+})
+
+
+
+const editNotes = note => ({
+    type: EDIT_NOTE,
+    note
+})
+
+
+const deleteNote = note => ({
+    type: DELETE_NOTE,
+    note
+})
+
+
+
 export const getAllNotes = () => async (dispatch) => {
     const response = await csrfFetch(`/api/notes`);
-    console.log("Response", response)
 
     if (response.ok) {
         const notes = await response.json();
@@ -21,44 +46,48 @@ export const getAllNotes = () => async (dispatch) => {
     }
 };
 
-// get a note function
-const getOneNote = (id) => async (dispatch) => {
-    const res = await csrfFetch(`/api/notes/${id}`)
-    if (res.ok) {
-        const note = await res.json();
-        if (note) {
-            dispatch(getNotes(note))
-        }
+
+
+export const getOneNote = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/${id}`)
+
+    if (response.ok) {
+        const note = await response.json()
+        console.log("THUNK...............", note)
+        dispatch(getANote(note))
     }
 }
-//------------------------------------------------------------------
-//Adds a note
-const addNote = note => ({
-    type: ADD_NOTE,
-    note,
-})
-// add note function
-const addANote = note => ({
-    type: ADD_NOTE,
-    note,
-})
-//------------------------------------------------------------------
-//Adds edits a note
-const editNotes = note => ({
-    type: EDIT_NOTE,
-    note
-})
-//edit note function
-//------------------------------------------------------------------
-// Deletes a note
-const deleteNote = note => ({
-    type: DELETE_NOTE,
-    note
-})
+
+
+
+export const addNote = (list) => async dispatch => {
+    const response = await csrfFetch(`api/notes/`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(list)
+    })
+    if(!response.ok) {
+        let error = await response.json()
+        return error
+    }
+    const list = await list.json()
+    await dispatch(addANote(list));
+    return list
+}
+
+
+
+
+
+
+
+
+
+
 // delete note function
 //------------------------------------------------------------------
 
-const intitalState = {list: []}
+const intitalState = { list: [] }
 
 const noteReducer = (state = intitalState, action) => {
     // console.log("INITIAL ACTION", action)
@@ -74,6 +103,33 @@ const noteReducer = (state = intitalState, action) => {
                 ...state.list,
                 list: action.list
             }
+        case GET_NOTE: {
+            const newState = {
+                ...state,
+                [action.list.id]: action.list
+            };
+            return newState;
+        }
+        case ADD_NOTE: {
+            if(!state[action.list.id]){
+                const newState = {
+                    ...state,
+                    [action.list.id]: action.list
+                };
+                const noteList = newState.list.map(id => newState[id]);
+                noteList.push(action.list);
+                newState.list = action.list
+                return newState;
+            }
+            return {
+                ...state,
+                [action.list.id]: {
+                    ...state[action.list.id],
+                    ...action.list
+                }
+            }
+        }
+
         default:
             return state;
     }

@@ -89,7 +89,7 @@ router.delete(
   requireAuth,
   asyncHandler(async function (req, res) {
     const note = await Note.findByPk(req.params.id);
-    if(!note) throw Error ("Unable to delete not");
+    if(!note) throw Error ("Unable to delete note");
     await Note.destroy({ where: {id: note.id} })
 
   })

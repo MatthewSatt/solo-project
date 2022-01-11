@@ -51,3 +51,8 @@ border: 1px solid #000000;
     padding-right: 35px;
     margin-bottom: 10px;
 }
+
+.login-button {
+    background-color: #dad7cd;
+    margin: 20px;
+}

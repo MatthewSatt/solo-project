@@ -1,27 +1,32 @@
-.navigation-navbar {
+.navigation-ul {
     margin: 0px;
     padding: 0px;
     display: inline;
     align-items: center;
     justify-content: space-between;
-    background-color: yellow;
     text-decoration: none;
 }
 
 
-.navigation-navbar li {
+.navigation-li {
     display: flex;
+    list-style-type: none;
     align-items: center;
     justify-content: space-between;
-    background-color: lightgrey;
+    background-color: #a3b18a;
 
 }
 
-#title {
+.navigation-li a {
     text-decoration: none;
+    list-style-type: none;
     display: flex;
     margin: 50px;
     list-style: none;
     font-size: 50px;
-    border-bottom: 1px solid black;
+    color: rgb(68, 150, 14);
+}
+
+#title {
+    color: #344e41;
 }

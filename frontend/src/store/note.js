@@ -53,10 +53,12 @@ export const getOneNote = (id) => async dispatch => {
 
     if (response.ok) {
         const note = await response.json()
-        console.log("THUNK...............", note)
         dispatch(getANote(note))
     }
 }
+
+
+
 
 
 
@@ -79,12 +81,25 @@ export const addNote = (list) => async dispatch => {
 
 
 
+// export const editNote = (id) => async dispatch => {
+//     const response = await csrfFetch(`api/notes/${id}`, {
+//         method: 'PUT',
+//         headers: {"Content-Type": 'application/json'},
+//         body: JSON.stringify()
+//     })
+// }
 
 
 
 
 
-// delete note function
+
+
+// export const deleteNote = (id) => async dispatch => {
+//     const response = await csrfFetch(`/api/notes/${id}`, {
+//         method: 'DELETE'
+//     })
+// }
 //------------------------------------------------------------------
 
 const intitalState = { list: [] }

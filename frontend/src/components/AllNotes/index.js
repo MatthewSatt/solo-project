@@ -8,7 +8,6 @@ import { getAllNotes } from "../../store/note";
 const AllNotes = () => {
     const notes = useSelector(state => state.note.list)
     const dispatch = useDispatch();
-    console.log("this is notes", notes)
 
     useEffect(() => {
         dispatch(getAllNotes());
@@ -16,7 +15,7 @@ const AllNotes = () => {
 
     return (
         <div>
-            <h2>This is single note</h2>
+            <h2>ALL THE NOTES</h2>
             <ul>
                 {notes?.map(note => (
                     <li key={note.content}>

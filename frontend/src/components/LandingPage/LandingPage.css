@@ -1,8 +1,29 @@
-.landing-page {
+.landing-page-1 {
     background-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: darkblue;
+    color: #dcebca;
+    background-color: #3a5a40;
+}
+
+.landing-page-2 {
+    display: inline-flex;
+
+    background-color: #588157;
+    color: white;
+
+}
+
+.landing-page-2 > img {
+    width: 50%;
+}
+
+.landing-page-3 {
+    background-color: #a3b18a;
+}
+
+.landing-page-4 {
+    background-color: #dad7cd;
 }

@@ -33,6 +33,7 @@ const editNoteValidations = [
 //Get all notes
 router.get(
   "/",
+  requireAuth,
   asyncHandler(async function (_req, res) {
     const notes = await Note.findAll();
     return res.json(notes);
@@ -48,6 +49,8 @@ router.get(
     return res.json(note);
   })
 );
+
+TODO: 'GET THE FORM BEFORE YOU CAN MAKE A POST'
 
 //Post new note
 router.post(

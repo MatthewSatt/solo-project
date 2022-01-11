@@ -1,5 +1,10 @@
+.landing-page-whole {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .landing-page-1 {
-    background-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,6 +15,8 @@
 
 .landing-page-2 {
     display: inline-flex;
+    margin: 0px;
+    padding: 0px;
 
     background-color: #588157;
     color: white;
@@ -18,12 +25,27 @@
 
 .landing-page-2 > img {
     width: 50%;
+    margin:0px;
+    padding: 0px;
 }
 
 .landing-page-3 {
     background-color: #a3b18a;
+    margin: 0px;
+    padding: 0px;
 }
 
-.landing-page-4 {
-    background-color: #dad7cd;
+.landing-page-3 > img{
+    margin-top: 0px;
+
+   width: 50%;
+}
+
+.landing-page-footer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+
+    background-color: #dcebca;
 }

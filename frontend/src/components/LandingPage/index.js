@@ -3,6 +3,7 @@ import './LandingPage.css'
 const LandingPage = () => {
     return (
         <>
+        <div className="landing-page-whole">
             <div className='landing-page-1'>
                     <h1>Tame your work, organize your life</h1>
                     <h1>Welcome to EverNote!</h1>
@@ -13,8 +14,14 @@ const LandingPage = () => {
                 <img src='/images/notebookpic.jpeg'/>
             </div>
             <div className='landing-page-3'>
-                <h1>Other</h1>
+                <img src='/images/stickynotes.jpeg'/>
+                <img src='/images/diary.jpeg'/>
             </div>
+            <div className="landing-page-footer">
+                <p>Matthew Satterwhite</p>
+                <a href="https://github.com/MatthewSatt">Github</a>
+            </div>
+        </div>
         </>
     )
 }

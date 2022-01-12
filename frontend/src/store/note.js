@@ -62,17 +62,17 @@ export const getOneNote = (id) => async dispatch => {
 
 
 
-export const addNote = (list) => async dispatch => {
-    const response = await csrfFetch(`api/notes/`, {
+export const addNote = (noList) => async dispatch => {
+    const response = await csrfFetch(`/api/notes`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(list)
+        body: JSON.stringify(noList)
     })
     if(!response.ok) {
         let error = await response.json()
         return error
     }
-    const list = await list.json()
+    const list = await response.json()
     await dispatch(addANote(list));
     return list
 }
@@ -126,16 +126,16 @@ const noteReducer = (state = intitalState, action) => {
             return newState;
         }
         case ADD_NOTE: {
-            if(!state[action.list.id]){
-                const newState = {
-                    ...state,
-                    [action.list.id]: action.list
-                };
-                const noteList = newState.list.map(id => newState[id]);
-                noteList.push(action.list);
-                newState.list = action.list
-                return newState;
-            }
+            // if(!state[action.list.id]){
+            //     const newState = {
+            //         ...state,
+            //         [action.list.id]: action.list
+            //     };
+            //     const noteList = newState.list.map(id => newState[id]);
+            //     noteList.push(action.list);
+            //     newState.list = action.list
+            //     return newState;
+            // }
             return {
                 ...state,
                 [action.list.id]: {

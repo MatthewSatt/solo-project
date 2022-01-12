@@ -54,15 +54,20 @@ router.get(
 TODO: 'GET THE FORM BEFORE YOU CAN MAKE A POST'
 
 //Post new note
-router.post(
-  "/new",
-  requireAuth,
-  validateNewNote,
-  asyncHandler(async function (req, res) {
-    const note = await Note.create(req.body);
-    return res.json(note);
+router.post('/',
+requireAuth,
+// validateNote,
+asyncHandler(async(req, res) => {
+  const {title, content, notebookId, userId} = req.body;
+  const note = await Note.create({
+    title,
+    content,
+    notebookId,
+    userId,
   })
-);
+  console.log(note)
+  return res.json(note)
+}))
 
 // Edit note
 router.put(

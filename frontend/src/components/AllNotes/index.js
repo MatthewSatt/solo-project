@@ -18,7 +18,7 @@ const AllNotes = () => {
             <h2>ALL THE NOTES</h2>
             <ul>
                 {notes?.map(note => (
-                    <li key={note.content}>
+                    <li key={note.id}>
                         {note.content}
                     </li>
                 ))}

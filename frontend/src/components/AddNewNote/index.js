@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import {addNote} from '../../store/note';
+import {addNote, getAllNotes} from '../../store/note';
 
 function AddOneNote() {
     const history = useHistory()
@@ -9,9 +9,13 @@ function AddOneNote() {
     const session = useSelector(state => state.session)
 
 
-
+    const userId = session.user.id
+    const notebookId = session.user.id
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
+
+
+
 
 
     const handleSubmit = async (e) => {
@@ -20,21 +24,15 @@ function AddOneNote() {
         //!!START SILENT
         const payload = {
             title,
-            content
+            content,
+            userId,
+            notebookId,
         }
 
-        let newNote;
-        try {
-            newNote = await dispatch(addNote(payload));
-        } catch (error) {
-            throw new Error("The Package was not delivered")
-        }
+        let newNote = await dispatch(addNote(payload))
 
-
-        // if (createdSpot) {
-        //     // history.push(`/notes/${createdSpot.id.id}`);
-        // }
     };
+
 
     const handleCancelClick = (e) => {
         e.preventDefault();

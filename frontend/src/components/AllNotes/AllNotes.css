@@ -1,0 +1,34 @@
+.allnotes {
+    display: flex;
+    flex-direction: flex;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3a5a40;
+    width: 30%;
+    border-right: solid 5px black;
+}
+
+#all-notes-title{
+    font-size: 70px;
+    color: #dad7cd
+}
+
+
+
+.right-panel {
+    background-color: #dad7cd;
+    width: 70%;
+
+}
+
+
+.link-to-single-note {
+    font-size: 18px;
+    text-decoration: none;
+    list-style-type: none;
+    color: #344e41;
+}

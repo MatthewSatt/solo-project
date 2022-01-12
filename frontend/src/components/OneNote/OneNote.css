@@ -1,0 +1,51 @@
+
+.onenoteitems {
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: column;
+}
+
+
+.onenoteitems h2 {
+    font-size: 30px;
+}
+
+
+.allnotes li {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.edit-delete-buttons {
+    display: inline;
+
+}
+
+#delete-note {
+    height: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+}
+
+#edit-note {
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+#delete-note:hover {
+    background-color: red;
+}
+
+
+#edit-note:hover {
+    background-color: yellow;
+}

@@ -1,0 +1,71 @@
+
+.new-note-form-container {
+    height: 100vh;
+    /* margin-left: 20%;
+    margin-right: 20%; */
+    background-color: #dad7cd;
+}
+
+
+.new-note-form-container h1 {
+    display: flex;
+    border: 5px solid black;
+    justify-content: center;
+    font-size: 70px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: #344e41;
+
+}
+
+.new-note-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+    height: 40%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #3a5a40;
+
+}
+
+.new-note-form input {
+    margin-top: 40px;
+    height: 40px;
+    font-size: 30px;
+}
+
+
+.new-note-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+
+#create-new-note-button {
+    margin-right: 30px;
+    height: 40px;
+    width: 40%;
+    border-radius: 5px;
+}
+
+
+#create-new-note-button:hover {
+    background-color: rgb(2, 218, 2);
+}
+
+#cancel-new-note {
+    height: 40px;
+    width: 40%;
+    margin-left: 30px;
+    border-radius: 5px;
+
+
+
+}
+
+#cancel-new-note:hover {
+    background-color: yellow;
+}

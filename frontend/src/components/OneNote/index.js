@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOneNote } from "../../store/note";
+import './OneNote.css'
 
 const OneNote = () => {
   const history = useHistory();
@@ -19,14 +20,22 @@ const OneNote = () => {
     history.push("/notes");
   };
 
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+  }
+
   return (
-    <div>
+    <div className="onenoteitems">
       <h2>
-        {note?.title} <br></br>
+        <p>Title:</p> {note?.title} <br></br>
         <br></br>
-        {note?.content}
+        <p>Content:</p> {note?.content}
       </h2>
-      <button onClick={handleSubmit}>Delete note</button>
+      <div className="edit-delete-buttons">
+        <button id='delete-note' onClick={handleSubmit}>Delete note</button>
+        <button id='edit-note' onClick={handleEdit}>Edit note</button>
+      </div>
     </div>
   );
 };

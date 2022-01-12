@@ -7,6 +7,9 @@ import Navigation from "./components/Navigation";
 import HomeLanding from "./components/HomeLanding";
 import OneNote from "./components/OneNote";
 import AddNewNote from "./components/AddNewNote";
+import HomePage from "./components/HomePage";
+import AddOneNote from "./components/AddNewNote";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -27,17 +30,17 @@ function App() {
           </Route>
 
 
-          <Route exact path='/notes'>
-            <AllNotes />
+           <Route exact path ='/notes'>
+            <AllNotes component={HomePage}/>
           </Route>
 
 
-          <Route path="/notes/:noteId">
+          <Route exact path="/notes/:noteId">
             <OneNote />
           </Route>
 
-          <Route path='/notes/new'>
-            <AddNewNote />
+          <Route exact path='/new'>
+            <AddOneNote />
           </Route>
 
 

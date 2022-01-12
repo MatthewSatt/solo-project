@@ -30,6 +30,7 @@ function AddOneNote() {
         }
 
         let newNote = await dispatch(addNote(payload))
+        history.push('/notes')
 
     };
 
@@ -61,8 +62,8 @@ function AddOneNote() {
                             />
                     </label>
 
-                    <button className="host-form" type="submit">Create new Spot</button>
-                    <button className="host-form" type="button" onClick={handleCancelClick}>Cancel</button>
+                    <button className="host-form" type="submit">Create Note</button>
+                    <button className="host-form" type="button">Cancel</button>
                 </form>
             </div>
 

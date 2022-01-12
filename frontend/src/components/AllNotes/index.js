@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {Link} from 'react-router-dom';
 
 import { getAllNotes } from "../../store/note";
 
@@ -19,7 +20,7 @@ const AllNotes = () => {
             <ul>
                 {notes?.map(note => (
                     <li key={note.id}>
-                        {note.content}
+                       <Link to={`/notes/${note.id}`}>{note.content}</Link>
                     </li>
                 ))}
             </ul>

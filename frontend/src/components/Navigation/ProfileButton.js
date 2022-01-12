@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import {Link, NavLink} from 'react-router-dom'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -41,7 +42,12 @@ function ProfileButton({ user }) {
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>
+
       )}
+      <div className='login-navigation'>
+        <Link id='profile-link' to='/notes'>View all notes</Link>
+        <Link id='profile-link' to='/new'>Add a note</Link>
+      </div>
     </>
   );
 }

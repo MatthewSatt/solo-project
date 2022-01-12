@@ -1,11 +1,11 @@
 .navigation-ul {
-    margin: 0px;
-    padding: 0px;
-    display: inline;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
+    width: 200%;
 }
+
 
 
 .navigation-li {
@@ -29,4 +29,22 @@
 
 #title {
     color: #344e41;
+}
+
+
+
+.login-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-navigation {
+    display: flex;
+    justify-content: center;
+}
+
+#profile-link {
+    font-size: 18px;
+    font-weight: bold;
 }

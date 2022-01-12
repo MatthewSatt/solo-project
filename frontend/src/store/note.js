@@ -30,9 +30,9 @@ const editNotes = note => ({
 })
 
 
-const deleteNote = note => ({
+const deleteANote = list => ({
     type: DELETE_NOTE,
-    note
+    list,
 })
 
 
@@ -95,11 +95,15 @@ export const addNote = (noList) => async dispatch => {
 
 
 
-// export const deleteNote = (id) => async dispatch => {
-//     const response = await csrfFetch(`/api/notes/${id}`, {
-//         method: 'DELETE'
-//     })
-// }
+export const deleteNote = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/${id}`, {
+        method: 'DELETE'
+    })
+    if(response.ok) {
+        const note = await response.json()
+        dispatch(deleteANote(note));
+    }
+}
 //------------------------------------------------------------------
 
 const intitalState = { list: [] }
@@ -126,16 +130,6 @@ const noteReducer = (state = intitalState, action) => {
             return newState;
         }
         case ADD_NOTE: {
-            // if(!state[action.list.id]){
-            //     const newState = {
-            //         ...state,
-            //         [action.list.id]: action.list
-            //     };
-            //     const noteList = newState.list.map(id => newState[id]);
-            //     noteList.push(action.list);
-            //     newState.list = action.list
-            //     return newState;
-            // }
             return {
                 ...state,
                 [action.list.id]: {
@@ -144,6 +138,11 @@ const noteReducer = (state = intitalState, action) => {
                 }
             }
         }
+        case DELETE_NOTE:
+            return {
+                
+            }
+
 
         default:
             return state;

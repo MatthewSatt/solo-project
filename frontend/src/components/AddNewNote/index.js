@@ -21,7 +21,6 @@ function AddOneNote() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        //!!START SILENT
         const payload = {
             title,
             content,

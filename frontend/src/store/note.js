@@ -138,10 +138,10 @@ const noteReducer = (state = intitalState, action) => {
                 }
             }
         }
-        case DELETE_NOTE:
-            return {
-                
-            }
+        // case DELETE_NOTE:
+        //     return {
+
+        //     }
 
 
         default:

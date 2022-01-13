@@ -12,10 +12,19 @@ function AddOneNote() {
 
     const userId = session.user.id
     const notebookId = session.user.id
+
+
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
+    const [errors, setErrors] = useState([])
 
-
+   useEffect(() => {
+        const errors = []
+        if(title.length > 45) errors.push("The title must not be longer than 45 characters!")
+        if(title.length < 3) errors.push("Title must not be shorter than 3 characters!")
+        if(content.length < 5) errors.push('Content must be at least 5 characters long')
+        setErrors(errors)
+    }, [title, content])
 
 
 
@@ -44,6 +53,13 @@ function AddOneNote() {
     return (
         <div className="new-note-form-container">
             <h1>Create a new note</h1>
+            <ul className="errors">
+                {errors.length > 0 && (
+                    errors.map(error => {
+                        return <li key={error}>{error}</li>
+                    })
+                )}
+            </ul>
             <div className="new-note-form">
                 <form onSubmit={handleSubmit}>
                     <label>
@@ -64,7 +80,7 @@ function AddOneNote() {
                             />
                     </label>
                     <div className="new-note-buttons">
-                        <button id="create-new-note-button" type="submit">Create Note</button>
+                        <button id="create-new-note-button" type="submit" disabled={errors.length > 0 ? true : false}>Create Note</button>
                         <button onClick={(handleCancelClick)} id="cancel-new-note" type="button">Cancel</button>
                     </div>
 

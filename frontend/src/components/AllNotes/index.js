@@ -25,7 +25,7 @@ const AllNotes = () => {
       </div>
       <div className="right-panel">
       <ul>
-        {notes?.map((note) => (
+        {notes.map((note) => (
           <li key={note.id}>
             <Link className="link-to-single-note" to={`/notes/${note.id}`}>{note.title}</Link>
           </li>

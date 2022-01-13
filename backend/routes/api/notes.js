@@ -79,7 +79,6 @@ router.put(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const note = await Note.findByPk(id);
-    // if (!note) throw new Error("CANNOT FIND THAT NOTE.");
     const { title, content, userId, notebookId } = req.body;
     const newNote = await note.update({
       id,

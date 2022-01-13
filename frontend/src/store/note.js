@@ -24,9 +24,9 @@ const addANote = list => ({
 
 
 
-const editNotes = note => ({
+const editNotes = data => ({
     type: EDIT_NOTE,
-    note
+    data
 })
 
 
@@ -45,6 +45,8 @@ export const getAllNotes = () => async (dispatch) => {
         dispatch(getNotes(notes));
     }
 };
+
+
 
 
 
@@ -81,14 +83,20 @@ export const addNote = (noList) => async dispatch => {
 
 
 
-// export const editNote = (id) => async dispatch => {
-//     const response = await csrfFetch(`api/notes/${id}`, {
-//         method: 'PUT',
-//         headers: {"Content-Type": 'application/json'},
-//         body: JSON.stringify()
-//     })
-// }
-
+export const editNote = (data) => async (dispatch) => {
+    const response = await csrfFetch(`/api/notes/${data.id}`, {
+        method: 'put',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+if (response.ok) {
+        const note = await response.json();
+        dispatch(editNotes(data));
+        return data;
+    }
+};
 
 
 
@@ -101,26 +109,23 @@ export const deleteNote = (id) => async dispatch => {
     })
     if(response.ok) {
         const note = await response.json()
-        dispatch(deleteANote(note));
+        await dispatch(deleteANote(note.id));
+        return note
     }
 }
 //------------------------------------------------------------------
-
-const intitalState = { list: [] }
+const initialState = { entries: {} };
+const intitalState = {}
 
 const noteReducer = (state = intitalState, action) => {
-    // console.log("INITIAL ACTION", action)
     switch (action.type) {
         case GET_ALL_NOTES:
             const allNotes = {};
             action.list.forEach(note => {
                 allNotes[note.id] = note;
             });
-            // console.log("ACTION", action)
             return {
                 ...allNotes,
-                ...state.list,
-                list: action.list
             }
         case GET_NOTE: {
             const newState = {
@@ -134,15 +139,20 @@ const noteReducer = (state = intitalState, action) => {
                 ...state,
                 [action.list.id]: {
                     ...state[action.list.id],
-                    ...action.list
                 }
             }
         }
-        // case DELETE_NOTE:
-        //     return {
-
-        //     }
-
+        case EDIT_NOTE: {
+            return {
+                ...state,
+                    [action.note.id]: action.note
+                }
+        }
+        case DELETE_NOTE: {
+            const newState = {...state};
+            delete newState[action.id]
+            return newState
+        }
 
         default:
             return state;

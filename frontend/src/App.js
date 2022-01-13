@@ -9,6 +9,7 @@ import OneNote from "./components/OneNote";
 import AddNewNote from "./components/AddNewNote";
 import HomePage from "./components/HomePage";
 import AddOneNote from "./components/AddNewNote";
+import EditNoteForm from './components/EditNoteForm'
 
 
 function App() {
@@ -42,6 +43,10 @@ function App() {
           <Route exact path='/new'>
             <AddOneNote />
           </Route>
+          <Route exact path='/:id/edit'>
+            <EditNoteForm />
+          </Route>
+
 
 
         </Switch>

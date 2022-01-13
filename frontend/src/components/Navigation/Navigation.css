@@ -6,9 +6,13 @@
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
+    padding: 0px;
+
 }
 
-
+html {
+    padding: 0;
+}
 
 .navigation-li {
     margin: 0px;

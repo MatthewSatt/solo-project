@@ -10,7 +10,7 @@ import './AllNotes.css'
 
 const AllNotes = () => {
 
-  const notes = useSelector((state) => state.note.list);
+  const notes = useSelector((state) => Object.values (state.note));
   const dispatch = useDispatch();
 
   useEffect(() => {

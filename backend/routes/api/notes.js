@@ -51,43 +51,44 @@ router.get(
   })
 );
 
-TODO: 'GET THE FORM BEFORE YOU CAN MAKE A POST'
+TODO: "GET THE FORM BEFORE YOU CAN MAKE A POST";
 
 //Post new note
-router.post('/',
-requireAuth,
-// validateNote,
-asyncHandler(async(req, res) => {
-  const {title, content, notebookId, userId} = req.body;
-  const note = await Note.create({
-    title,
-    content,
-    notebookId,
-    userId,
+router.post(
+  "/",
+  requireAuth,
+  // validateNote,
+  asyncHandler(async (req, res) => {
+    const { title, content, notebookId, userId } = req.body;
+    const note = await Note.create({
+      title,
+      content,
+      notebookId,
+      userId,
+    });
+    console.log(note);
+    return res.json(note);
   })
-  console.log(note)
-  return res.json(note)
-}))
+);
 
 // Edit note
 router.put(
   "/:id",
   requireAuth,
+  editNoteValidations,
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const note = await Note.findByPk(id);
-    if (note !== null) {
-      const { title, content } = req.body;
-      const newNote = {
-        id,
-        userId,
-        notebookId,
-        title,
-        content,
-      };
-    } else {
-      throw Error("Unable to edit note");
-    }
+    // if (!note) throw new Error("CANNOT FIND THAT NOTE.");
+    const { title, content, userId, notebookId } = req.body;
+    const newNote = await note.update({
+      id,
+      title,
+      content,
+      notebookId,
+      userId
+    });
+    return res.json(newNote);
   })
 );
 
@@ -98,9 +99,8 @@ router.delete(
   requireAuth,
   asyncHandler(async function (req, res) {
     const note = await Note.findByPk(req.params.id);
-    if(!note) throw Error ("Unable to delete note");
-    await Note.destroy({ where: {id: note.id} })
-
+    if (!note) throw Error("Unable to delete note");
+    await Note.destroy({ where: { id: note.id } });
   })
 );
 

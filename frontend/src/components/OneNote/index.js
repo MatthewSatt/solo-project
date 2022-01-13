@@ -5,11 +5,15 @@ import { useHistory, useParams } from "react-router-dom";
 import { getOneNote } from "../../store/note";
 import './OneNote.css'
 
+
 const OneNote = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { noteId } = useParams();
   const note = useSelector((state) => state.note[noteId]);
+
+
+
   useEffect(() => {
     dispatch(getOneNote(noteId));
   }, [dispatch, noteId]);
@@ -20,9 +24,14 @@ const OneNote = () => {
     history.push("/notes");
   };
 
+  const backToList = (e) => {
+    e.preventDefault()
+  }
+
 
   const handleEdit = (e) => {
     e.preventDefault();
+    history.push(`/${note.id}/edit`)
   }
 
   return (

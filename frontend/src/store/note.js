@@ -114,7 +114,7 @@ export const deleteNote = (id) => async dispatch => {
     }
 }
 //------------------------------------------------------------------
-const initialState = { entries: {} };
+
 const intitalState = {}
 
 const noteReducer = (state = intitalState, action) => {

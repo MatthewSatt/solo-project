@@ -11,7 +11,8 @@ function AddOneNote() {
 
 
     const userId = session.user.id
-    const notebookId = session.user.id
+
+  const notebookId = 1
 
 
     const [title, setTitle] = useState("")

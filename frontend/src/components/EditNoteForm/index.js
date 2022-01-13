@@ -13,7 +13,8 @@ function EditNoteForm() {
 
     const {id} = useParams()
     const userId = session.user.id
-    const notebookId = session.user.id
+
+    const notebookId = 1
     const [title, setTitle] = useState('')
     const [content, setContent] = useState("")
     const [errors, setErrors] = useState([])

@@ -24,9 +24,9 @@ const addANote = list => ({
 
 
 
-const editNotes = data => ({
+const editNotes = note => ({
     type: EDIT_NOTE,
-    data
+    note
 })
 
 
@@ -75,7 +75,7 @@ export const addNote = (noList) => async dispatch => {
         return error
     }
     const list = await response.json()
-    await dispatch(addANote(list));
+    dispatch(addANote(list));
     return list
 }
 
@@ -93,8 +93,8 @@ export const editNote = (data) => async (dispatch) => {
     });
 if (response.ok) {
         const note = await response.json();
-        dispatch(editNotes(data));
-        return data;
+        dispatch(editNotes(note));
+        return note;
     }
 };
 

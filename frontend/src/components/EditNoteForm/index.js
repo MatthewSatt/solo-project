@@ -41,7 +41,7 @@ function EditNoteForm() {
         }
 
         let newNote = await dispatch(editNote(payload))
-        history.push('/notes')
+        history.push(`/notes`)
 
     };
 

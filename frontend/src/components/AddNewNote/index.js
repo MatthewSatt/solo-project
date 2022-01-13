@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import {addNote, getAllNotes} from '../../store/note';
+import { useHistory } from "react-router-dom";
+import {addNote} from '../../store/note';
 import './AddNewNote.css'
 
 function AddOneNote() {

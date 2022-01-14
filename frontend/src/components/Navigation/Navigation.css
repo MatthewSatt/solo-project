@@ -26,6 +26,17 @@ html {
     height: 100
 }
 
+.navigation-li button {
+    border-radius: 5px;
+    background-color: #3a5a40;
+
+}
+
+.navigation-li button{
+    color: white
+    
+}
+
 .navigation-li a {
     text-decoration: none;
     list-style-type: none;

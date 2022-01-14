@@ -1,6 +1,8 @@
 .landing-page-whole {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -11,34 +13,66 @@
     align-items: center;
     color: #dcebca;
     background-color: #3a5a40;
+    padding: 0 40px;
+    width: 70%;
+    border-radius: 10px;
 }
 
-.landing-page-2 {
-    display: inline-flex;
-    margin: 0px;
-    padding: 0px;
 
-    background-color: #588157;
+.landing-page-1 > h1{
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+.landing-page-1 > h2{
+    font-size: 30px;
+    margin: 20px 0;
+    color: #949d8a;
+}
+
+.landing-page-1 > h3{
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+    color: #949d8a;
+    margin-bottom: 30px;
+}
+
+
+
+.landing-page-2 {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
     color: white;
+    margin: 5px;
 
 }
 
 .landing-page-2 > img {
-    width: 50%;
-    margin:0px;
+    width: 30%;
+    margin:5px;
     padding: 0px;
 }
 
 .landing-page-3 {
-    background-color: #a3b18a;
-    margin: 0px;
-    padding: 0px;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+    margin: 5px;
 }
 
 .landing-page-3 > img{
     margin-top: 0px;
+    margin:5px;
+   width: 30%;
+}
 
-   width: 50%;
+
+img {
+    border-radius: 10px;
+    background-color: transparent;
 }
 
 .landing-page-footer {

@@ -21,9 +21,10 @@ function AddOneNote() {
 
    useEffect(() => {
         const errors = []
-        if(title.length > 45) errors.push("The title must not be longer than 45 characters!")
-        if(title.length < 3) errors.push("Title must not be shorter than 3 characters!")
+        if(title.length > 15) errors.push("Title must not be longer than 15 characters")
+        if(title.length < 3) errors.push("Title must not be shorter than 3 characters")
         if(content.length < 5) errors.push('Content must be at least 5 characters long')
+        if(content.length > 30) errors.push("Content must not exceed 25 characters")
         setErrors(errors)
     }, [title, content])
 

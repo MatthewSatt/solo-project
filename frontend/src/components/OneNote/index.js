@@ -21,8 +21,11 @@ const OneNote = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(deleteNote(noteId));
-    history.push("/notes");
-  };
+
+    if(dispatch) {
+      history.push("/notes");
+    };
+  }
 
   const backToList = (e) => {
     e.preventDefault()

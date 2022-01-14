@@ -3,11 +3,17 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom'
+import './profileButton.css'
+import {useSelector} from 'react-redux'
+
 
 function ProfileButton({ user }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+
+const sessionUser = useSelector(state => state.session.user);
+
 
   const openMenu = () => {
     if (showMenu) return;
@@ -34,7 +40,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu}>HELLO,<br></br>{sessionUser.username}
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
@@ -56,4 +62,3 @@ function ProfileButton({ user }) {
 }
 
 export default ProfileButton;
-

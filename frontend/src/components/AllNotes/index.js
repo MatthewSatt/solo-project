@@ -10,7 +10,8 @@ import './AllNotes.css'
 
 const AllNotes = () => {
 
-  const notes = useSelector((state) => Object.values (state.note));
+  const notes = useSelector((state) => Object.values(state.note));
+  console.log("notes", notes)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,9 +26,9 @@ const AllNotes = () => {
       </div>
       <div className="right-panel">
       <ul>
-        {notes.map((note) => (
+        {notes?.map((note) => (
           <li key={note.id}>
-            <Link className="link-to-single-note" to={`/notes/${note.id}`}>{note.title}</Link>
+            <Link className="link-to-single-note" to={`/notes/${note?.id}`}>{note.title}</Link>
           </li>
         ))}
       </ul>

@@ -30,9 +30,9 @@ const editNotes = note => ({
 })
 
 
-const deleteANote = list => ({
+const deleteANote = id => ({
     type: DELETE_NOTE,
-    list,
+    id
 })
 
 
@@ -149,11 +149,10 @@ const noteReducer = (state = intitalState, action) => {
                 }
         }
         case DELETE_NOTE: {
-            const newState = {...state};
-            delete newState[action.id]
-            return newState
+            const newState = { ...state };
+            delete newState[action.id];
+            return newState;
         }
-
         default:
             return state;
     }

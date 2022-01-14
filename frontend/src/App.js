@@ -32,7 +32,7 @@ function App() {
 
 
            <Route exact path ='/notes'>
-            <AllNotes component={HomePage}/>
+            <AllNotes />
           </Route>
 
 

@@ -40,7 +40,7 @@ const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
-      <button onClick={openMenu}>HELLO,<br></br>{sessionUser.username}
+      <button id='whocaresanymore' onClick={openMenu}>HELLO,<br></br>{sessionUser.username}
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (

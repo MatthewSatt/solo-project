@@ -34,7 +34,7 @@ html {
 
 .navigation-li button{
     color: white
-    
+
 }
 
 .navigation-li a {
@@ -67,4 +67,9 @@ html {
 #profile-link {
     font-size: 18px;
     font-weight: bold;
+}
+
+#whocaresanymore {
+    white-space: nowrap;
+    rotate: 360;
 }

@@ -90,9 +90,10 @@ router.put(
 // delete notebook
 
 router.delete(
-  "/:id",
+  "/remove/:id",
   requireAuth,
   asyncHandler(async function (req, res) {
+    console.log('backend!')
     const notebook = await Notebook.findByPk(req.params.id);
     if(!notebook) throw Error ("Unable to delete notebook");
     await Notebook.destroy({ where: {id: notebook.id} })

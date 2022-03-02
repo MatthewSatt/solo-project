@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   note: noteReducer,
-  notebook: notebookReducer
+  notebookReducer
 });
 
 let enhancer;

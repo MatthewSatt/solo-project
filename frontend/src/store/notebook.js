@@ -39,6 +39,7 @@ const addN = notebook => ({
 })
 
 export const addNotebook = (data) => async (dispatch) => {
+    console.log('...............', data)
     const res = await csrfFetch('/api/notebooks/new', {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -52,33 +53,36 @@ export const addNotebook = (data) => async (dispatch) => {
 /* ---------------------------------------------------- */
 const DELETE_NOTEBOOK = '/notebook/DELETE_NOTEBOOK'
 
-const deleteN = id => ({
+const deleteNotebookThunk = id => ({
     type: DELETE_NOTEBOOK,
     id
 })
 
+// export const deleteNotebook = (id) => async (dispatch) => {
+//         const res = await csrfFetch(`/api/notebooks/remove/${id}`,
+//             method: "DELETE",
 export const deleteNotebook = (id) => async (dispatch) => {
-    console.log('.................', id)
-        const res = await csrfFetch(`/api/notebooks/remove/${id}`, {
-            method: "DELETE",
-        })
-        if(res.ok) {
-            const notebook = await res.json()
-            dispatch(deleteN(notebook.id));
-            return notebook
+    const response = await csrfFetch(`/api/notebooks/remove/${id}`, {
+        method: 'DELETE'
+    })
+    if(response.ok) {
+        const notebook = await response.json()
+        console.log('notebook from server.....', notebook)
+        await dispatch(deleteNotebookThunk(notebook.id));
+        return notebook
     }
 }
-
 
 /* ---------------------------------------------------- */
 export default function notebookReducer(state = [], action) {
     switch (action.type) {
         case GET_NOTEBOOKS:
             return action.notebooks
-        // case ADD_NOTEBOOK:
-        //     return [...state, action.notebook];
+
+        case ADD_NOTEBOOK:
+            return [...state, action.notebook]
         case DELETE_NOTEBOOK:
-            return state.filter((notebook) => notebook.id !== action.payload.id);
+            return state.filter((notebook) => notebook.id !== action.id);
         default:
             return state;
     }

@@ -54,7 +54,7 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
 
 // post new notebook
 router.post(
-  "/",
+  "/new",
   requireAuth,
   validateNewNotebook,
   asyncHandler(async function (req, res) {
@@ -97,7 +97,7 @@ router.delete(
     const notebook = await Notebook.findByPk(req.params.id);
     if(!notebook) throw Error ("Unable to delete notebook");
     await Notebook.destroy({ where: {id: notebook.id} })
-
+    return res.json(notebook)
   })
 );
 

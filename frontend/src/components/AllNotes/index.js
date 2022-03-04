@@ -11,6 +11,7 @@ import './AllNotes.css'
 const AllNotes = () => {
 
   const notes = useSelector((state) => Object.values(state.note));
+  
   console.log("notes", notes)
   const dispatch = useDispatch();
 

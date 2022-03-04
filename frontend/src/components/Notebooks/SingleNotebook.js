@@ -1,20 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { deleteNotebook, getNotebooks } from "../../store/notebook";
 import "./SingleNotebook.css";
-function SingleNotebook({ notebook, item, setItem}) {
+function SingleNotebook({ notebook }) {
   const dispatch = useDispatch();
+  const history = useHistory()
+  const notebooks = useSelector((state) => state.notebookReducer)
 
 
 
-
-  const handleDelete = () => {
-    //   dispatch(deleteNotebook(notebook.id))
-      console.log('delete', notebook.id)
-     dispatch(deleteNotebook(notebook.id))
-     setItem(notebook.id)
-     return
+  const handleDelete = async () => {
+      await dispatch(deleteNotebook(notebook.id))
+      history.push('/notebooks')
   };
 
   const editNotebook = () => {

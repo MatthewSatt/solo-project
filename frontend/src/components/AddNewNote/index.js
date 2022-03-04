@@ -8,6 +8,7 @@ function AddOneNote() {
     const history = useHistory()
     const dispatch = useDispatch()
     const session = useSelector(state => state.session)
+    const notes = useSelector((state) => Object.values(state.note));
 
 
     const userId = session.user.id
@@ -39,6 +40,7 @@ function AddOneNote() {
             userId,
             notebookId,
         }
+        console.log(payload)
 
         let newNote = await dispatch(addNote(payload))
         history.push('/notes')

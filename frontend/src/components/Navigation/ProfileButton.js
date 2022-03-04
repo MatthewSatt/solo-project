@@ -54,7 +54,8 @@ const sessionUser = useSelector(state => state.session.user);
 
       )}
       <div className='login-navigation'>
-        <Link id='profile-link' to='/notes'>View all notes</Link>
+        <Link id='profile-link' to='/notebooks'>View Notebooks</Link>
+        <Link id='profile-link' to='/notes'>View Notes</Link>
         <Link id='profile-link' to='/new'>Add a note</Link>
       </div>
     </>

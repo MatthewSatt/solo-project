@@ -1,0 +1,12 @@
+.notebookpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notebooks {
+    display: flex;
+    justify-content: center;
+   flex-wrap: wrap;
+    align-items: center;
+}

@@ -6,11 +6,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomeLanding from "./components/HomeLanding";
 import OneNote from "./components/OneNote";
-import AddNewNote from "./components/AddNewNote";
-import HomePage from "./components/HomePage";
 import AddOneNote from "./components/AddNewNote";
 import EditNoteForm from './components/EditNoteForm'
 import Notebooks from "./components/Notebooks";
+import InsideNotebook from "./components/Notebooks/InsideNotebook";
 
 
 function App() {
@@ -49,7 +48,9 @@ function App() {
             <Notebooks />
           </Route>
 
-
+          <Route exact path='/notebooks/:id'>
+          <InsideNotebook />
+          </Route>
 
           <Route exact path='/:id/edit'>
             <EditNoteForm />

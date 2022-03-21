@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import {useHistory} from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { deleteNotebook, getNotebooks } from "../../store/notebook";
+import { Link } from "react-router-dom";
 import "./SingleNotebook.css";
+import InsideNotebook from "./InsideNotebook";
 function SingleNotebook({ notebook }) {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -22,7 +24,9 @@ function SingleNotebook({ notebook }) {
 
   return (
     <div className="singlenotebook">
-      <h2>{notebook.title}</h2>
+      <Link to={`/notebooks/${notebook.id}`}>
+        <h2>{notebook.title}</h2>
+        </Link>
       <div key={notebook.id}>
         <p>{notebook.id}</p>
         <p>{notebook.userId}</p>

@@ -4,6 +4,7 @@ import { addNotebook, getNotebooks } from "../../store/notebook";
 import { useEffect, useState } from "react";
 import SingleNotebook from "./SingleNotebook";
 import AddNotebook from './AddNotebook'
+import InsideNotebook from './InsideNotebook'
 import './Notebooks.css'
 
 
@@ -36,9 +37,11 @@ useEffect(() => {
 
 return (
     <div className="notebooks">
+       <div>
       <h1>Welcome to Evernote {user.username}!</h1>
       <h2>Organize all of your notes one place</h2>
       <h3>Select from your notebooks below to get started</h3>
+       </div>
       <button onClick={handleCustomAdd}>Add Custom Notebook </button>
       {showModal && (
          <div>
@@ -47,7 +50,7 @@ return (
       )}
       <button onClick={handleAdd}>Generate Random Notebook</button>
           {notebooks && notebooks.map((notebook) => (
-          <div id={notebook.id} key={notebook.id}>
+             <div id={notebook.id} key={notebook.id}>
              <SingleNotebook notebook={notebook} />
           </div>
           )).reverse()}

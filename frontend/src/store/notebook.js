@@ -31,6 +31,26 @@ export const getNotebook = (id) => async (dispatch) => {
     }
 }
 /* ---------------------------------------------------- */
+
+const GET_NOTEBOOK_NOTES = '/notebook/GET_NOTEBOOK_NOTES'
+
+const getNotebookN = notebook => ({
+    type: GET_NOTEBOOK_NOTES,
+    payload: notebook
+})
+
+export const notebookNotes = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/notebooks/notes/${id}`)
+    if(res.ok) {
+        const notebook = await res.json()
+        dispatch(getNotebookN(notebook))
+        return notebook
+    } else {
+        return null
+    }
+}
+
+/* ---------------------------------------------------- */
 const ADD_NOTEBOOK = '/notebook/ADD_NOTEBOOK'
 
 const addN = notebook => ({
@@ -78,11 +98,12 @@ export default function notebookReducer(state = [], action) {
     switch (action.type) {
         case GET_NOTEBOOKS:
             return action.notebooks
-
         case ADD_NOTEBOOK:
             return [...state, action.notebook]
         case DELETE_NOTEBOOK:
             return state.filter((notebook) => notebook.id !== action.id);
+        case GET_NOTEBOOK_NOTES:
+            return action.payload
         default:
             return state;
     }
